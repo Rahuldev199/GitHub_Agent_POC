@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GitHub Activity</title>
+  <link rel="stylesheet" href="/static/app.css">
+  <link rel="stylesheet" href="/static/chat-progress.css">
+</head>
+<body>
+  <header><div><span class="logo">Pulse</span><span class="muted">GitHub Activity</span></div><span class="badge">READ ONLY</span></header>
+  <main>
+    <section class="hero">
+      <div><p class="eyebrow">TEAM INTELLIGENCE</p><h1>Engineering activity, clearly.</h1><p id="subtitle">A trusted view of team delivery.</p></div>
+      <div class="controls">
+        <label>Team<select id="team"></select></label>
+        <label>Period<input id="period" value="this month" placeholder="YYYY-MM"></label>
+        <button id="refresh">Refresh data</button>
+      </div>
+    </section>
+    <div id="error" class="error hidden"></div>
+    <section id="cards" class="cards"></section>
+    <section class="grid two">
+      <article><div class="section-title"><h2>Commits by member</h2></div><canvas id="commitChart"></canvas></article>
+      <article><div class="section-title"><h2>Pull request states</h2></div><div class="donut-wrap"><div id="prDonut" class="donut"></div><div id="prLegend"></div></div></article>
+    </section>
+    <section class="grid two">
+      <article><div class="section-title"><h2>Daily activity</h2></div><div id="heatmap" class="heatmap"></div></article>
+      <article><div class="section-title"><h2>Month-over-month</h2></div><canvas id="trendChart"></canvas></article>
+    </section>
+    <section class="table-card">
+      <div class="section-title"><div><h2>Members</h2><p class="muted">Select a heading to sort</p></div><div class="exports"><button data-export="xlsx">XLSX</button><button data-export="csv">CSV</button><button data-export="html">HTML</button></div></div>
+      <div class="table-scroll"><table><thead><tr><th data-key="member_login">Member</th><th data-key="commits">Commits</th><th data-key="lines_added">Added</th><th data-key="lines_deleted">Deleted</th><th data-key="pull_requests_opened">PRs</th><th data-key="reviews_submitted">Reviews</th><th data-key="workflow_runs">Runs</th><th>Status</th></tr></thead><tbody id="members"></tbody></table></div>
+    </section>
+    <section id="warnings" class="warnings hidden"><h2>Warnings</h2><div id="warningList"></div></section>
+    <section class="chat-card"><div class="section-title"><div><h2>Ask the activity agent</h2><p class="muted">Read-only answers based on configured GitHub data</p></div></div><div id="messages" class="messages" aria-live="polite" aria-relevant="additions text"></div><form id="chat"><input id="question" maxlength="4000" autocomplete="off" placeholder="Ask about commits, lines, PRs, reviews…"><button id="send" type="submit">Send</button></form></section>
+  </main>
+  <div id="loading" class="loading hidden"><span></span><b>Loading activity…</b></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

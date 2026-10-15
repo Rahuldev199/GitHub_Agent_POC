@@ -1,0 +1,15 @@
+# Bootstrap configuration. Copy to %APPDATA%\github-member-activity\config (no extension).
+# MongoDB becomes authoritative for operational settings after the first successful run.
+# Tokens remain in environment variables or Windows Credential Manager and are never seeded.
+
+github_organization = "your-company"
+github_repositories_json = "[]"
+cache_backend = "mongodb"
+mongodb_uri = "mongodb://localhost:27017"
+mongodb_database = "github_member_stats"
+# The values below are initial seed values. Edit application_config/default in MongoDB
+# after it is created; subsequent application starts load them from MongoDB.
+cache_ttl_seconds = 3600
+activity_detail_limit = 200
+team_member_concurrency = 4
+copilot_model = "gpt-5"

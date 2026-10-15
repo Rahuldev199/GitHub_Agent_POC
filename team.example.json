@@ -1,0 +1,8 @@
+{
+  "_id": "backend",
+  "team_name": "Backend",
+  "lead_logins": ["team-lead-github-login"],
+  "members": ["member-one", "member-two"],
+  "repositories": ["your-company/api", "your-company/payments"],
+  "enabled": true
+}
